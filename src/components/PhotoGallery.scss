@@ -1,6 +1,22 @@
 body {
   margin: 0;
-  overflow-x: hidden;
+  background: black;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+#app {
+  overflow: hidden;
+}
+
+#photo-gallery {
+  position: relative;
+  width: 100vw;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .gallery {
@@ -8,15 +24,19 @@ body {
   flex-direction: row;
   -webkit-transition: transform 0.8s;
   transition: transform 0.5s;
+  width: inherit;
+  height: inherit;
 }
 
 .slide {
   background: #0e0e0e;
+  width: inherit;
+  height: inherit;
 }
 
 .slide-container {
-  width: 100vw;
-  height: 100vh;
+  width: inherit;
+  height: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,8 +47,9 @@ body {
   background: rgba(0,0,0,0.5);
   padding: 16px 48px 16px 48px;
   width: 100%;
-  position: fixed;
+  position: absolute;
   bottom: 0;
+  left: 0;
   font-family: 'Avenir Next', sans-serif;
 }
 
@@ -44,4 +65,10 @@ body {
 
 .right {
   right: 48px;
+}
+
+@media (min-width: 800px) {
+  #photo-gallery {
+    height: 100vh;
+  }
 }

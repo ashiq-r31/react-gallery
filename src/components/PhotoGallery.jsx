@@ -16,10 +16,10 @@ export default class PhotoGallery extends Component {
       current: 0,
       images: [
         { url: seriousImg, caption: 'Back at my favorite spot in Deep Ellum!' },
-        { url: japanImg, caption: 'Neon city.' },
-        { url: waveImg, caption: 'Hi guys.' },
-        { url: pieImg, caption: 'They are an actual pie restaurant - just saying.' },
-        { url: bb8Img, caption: 'Best Star Wars character since Chewie.' },
+        { url: japanImg, caption: 'Neon city' },
+        { url: waveImg, caption: 'Hi guys' },
+        { url: pieImg, caption: 'They are an actual pie restaurant - just saying' },
+        { url: bb8Img, caption: 'Best Star Wars character since Chewie' },
       ]
     }
   }
@@ -29,10 +29,10 @@ export default class PhotoGallery extends Component {
       return (
         <div key={`slide-${index}`} className='slide'>
           <div key={`slide-container-${index}`} className='slide-container'>
-            <img 
-              key={`img-${index}`} 
-              style={{ height: 'inherit' }} 
-              src={image.url} 
+            <img
+              key={`img-${index}`}
+              style={{ height: 'inherit' }}
+              src={image.url}
               alt={image.caption} />
           </div>
         </div>
@@ -46,28 +46,27 @@ export default class PhotoGallery extends Component {
       this.setState({ current })
     }
     if (name === 'prev' && this.state.current > 0) {
-      const current = this.state.current - 1 
+      const current = this.state.current - 1
       this.setState({ current })
     }
   }
 
   render() {
     return (
-      <div>
+      <div id='photo-gallery'>
         <div className='gallery' style={{ transform: `translate(${this.state.current * -100}vw)` }}>
           {this.createImages()}
         </div>
-        
-        {this.state.current > 0 && 
-          <img 
-            className='direction left' 
-            src={leftIcon} alt='left' 
+        {this.state.current > 0 &&
+          <img
+            className='direction left'
+            src={leftIcon} alt='left'
             onClick={() => this.slide('prev')} />}
-        {this.state.current < this.state.images.length - 1 && 
-          <img 
-            className='direction right' 
-            src={rightIcon} 
-            alt='right' 
+        {this.state.current < this.state.images.length - 1 &&
+          <img
+            className='direction right'
+            src={rightIcon}
+            alt='right'
             onClick={() => this.slide('next')} />}
 
         <div className='caption'>

@@ -5,6 +5,7 @@ import seriousImg from '../images/serious-pizza.jpg'
 import japanImg from '../images/japan.jpg'
 import pieImg from '../images/pie.png'
 import bb8Img from '../images/bb8_1.svg'
+import waveImg from '../images/wave.gif'
 import leftIcon from '../images/left.svg'
 import rightIcon from '../images/right.svg'
 
@@ -15,7 +16,8 @@ export default class PhotoGallery extends Component {
       current: 0,
       images: [
         { url: seriousImg, caption: 'Back at my favorite spot in Deep Ellum!' },
-        { url: japanImg, caption: 'Neon city' },
+        { url: japanImg, caption: 'Neon city.' },
+        { url: waveImg, caption: 'Hi guys.' },
         { url: pieImg, caption: 'They are an actual pie restaurant - just saying.' },
         { url: bb8Img, caption: 'Best Star Wars character since Chewie.' },
       ]

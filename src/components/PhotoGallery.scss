@@ -49,6 +49,7 @@ p {
 
 .caption {
   color: white;
+  font-size: 10px;
   background: rgba(0,0,0,0.5);
   padding: 8px 48px 8px 48px;
   width: 100%;
@@ -76,6 +77,10 @@ p {
   #photo-gallery {
     height: 50vh;
   }
+
+  .caption {
+    font-size: 12px;
+  }
 }
 
 
@@ -85,6 +90,7 @@ p {
   }
 
   .caption {
+    font-size: 16px;
     padding: 16px 48px 16px 48px;
   }
 }

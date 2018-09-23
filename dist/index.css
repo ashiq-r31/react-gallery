@@ -42,6 +42,7 @@ p {
 
 .caption {
   color: white;
+  font-size: 10px;
   background: rgba(0, 0, 0, 0.5);
   padding: 8px 48px 8px 48px;
   width: 100%;
@@ -63,12 +64,15 @@ p {
 
 @media (min-width: 600px) {
   #photo-gallery {
-    height: 50vh; } }
+    height: 50vh; }
+  .caption {
+    font-size: 12px; } }
 
 @media (min-width: 800px) {
   #photo-gallery {
     height: 75vh; }
   .caption {
+    font-size: 16px;
     padding: 16px 48px 16px 48px; } }
 
 @media (min-width: 1200px) {

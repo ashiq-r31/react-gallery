@@ -13,6 +13,7 @@ export default class PhotoGallery extends Component {
   constructor() {
     super()
     this.state = {
+      touch: null,
       current: 0,
       images: [
         { url: seriousImg, caption: 'Back at my favorite spot in Deep Ellum!' },
@@ -24,10 +25,25 @@ export default class PhotoGallery extends Component {
     }
   }
 
+  handleStart(e) {
+    const clientX = e.changedTouches[0].clientX 
+    this.setState({ clientX })
+  }
+
+  handleEnd(e) {
+    const deltaX = e.changedTouches[0].clientX - this.state.clientX
+    if(deltaX < -20 && this.state.current < this.state.images.length - 1) this.slide('next')
+    if(deltaX > 20 && this.state.current > 0) this.slide('prev')
+  }
+
   createImages() {
     return this.state.images.map((image, index) => {
       return (
-        <div key={`slide-${index}`} className='slide'>
+        <div 
+          key={`slide-${index}`} 
+          className='slide' 
+          onTouchStart={(e) => this.handleStart(e)}
+          onTouchEnd={(e) => this.handleEnd(e)}>
           <div key={`slide-container-${index}`} className='slide-container'>
             <img
               key={`img-${index}`}

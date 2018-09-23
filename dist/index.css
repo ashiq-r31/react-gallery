@@ -1,3 +1,77 @@
-img {
-  width: 400px; }
+body {
+  margin: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  height: 100vh; }
+
+p {
+  margin-top: 8px;
+  margin-bottom: 8px; }
+
+#app {
+  overflow: hidden; }
+
+#photo-gallery {
+  position: relative;
+  width: 100vw;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  -webkit-transition: transform 0.8s;
+  transition: transform 0.5s;
+  width: inherit;
+  height: inherit; }
+
+.slide {
+  background: #1f1f1f;
+  width: inherit;
+  height: inherit; }
+
+.slide-container {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.caption {
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 48px 8px 48px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-family: 'Avenir Next', sans-serif; }
+
+.direction {
+  position: absolute;
+  top: 45%;
+  cursor: pointer; }
+
+.left {
+  left: 48px; }
+
+.right {
+  right: 48px; }
+
+@media (min-width: 600px) {
+  #photo-gallery {
+    height: 50vh; } }
+
+@media (min-width: 800px) {
+  #photo-gallery {
+    height: 75vh; }
+  .caption {
+    padding: 16px 48px 16px 48px; } }
+
+@media (min-width: 1600px) {
+  #photo-gallery {
+    height: 100vh; } }
 

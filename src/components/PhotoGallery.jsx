@@ -57,6 +57,7 @@ export default class PhotoGallery extends Component {
         <div className='gallery' style={{ transform: `translate(${this.state.current * -100}vw)` }}>
           {this.createImages()}
         </div>
+        
         {this.state.current > 0 &&
           <img
             className='direction left'

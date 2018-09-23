@@ -6,6 +6,11 @@ body {
   height: 100vh;
 }
 
+p {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 #app {
   overflow: hidden;
 }
@@ -29,7 +34,7 @@ body {
 }
 
 .slide {
-  background: #0e0e0e;
+  background: #1f1f1f;
   width: inherit;
   height: inherit;
 }
@@ -45,7 +50,7 @@ body {
 .caption {
   color: white;
   background: rgba(0,0,0,0.5);
-  padding: 16px 48px 16px 48px;
+  padding: 8px 48px 8px 48px;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -67,7 +72,24 @@ body {
   right: 48px;
 }
 
+@media (min-width: 600px) {
+  #photo-gallery {
+    height: 50vh;
+  }
+}
+
+
 @media (min-width: 800px) {
+  #photo-gallery {
+    height: 75vh;
+  }
+
+  .caption {
+    padding: 16px 48px 16px 48px;
+  }
+}
+
+@media (min-width: 1600px) {
   #photo-gallery {
     height: 100vh;
   }

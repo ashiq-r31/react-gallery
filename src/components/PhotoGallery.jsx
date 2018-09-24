@@ -71,7 +71,6 @@ export default class PhotoGallery extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div id='photo-gallery'>
         <div className='gallery' style={{ transform: `translate(${this.state.current * -100}vw)` }}>

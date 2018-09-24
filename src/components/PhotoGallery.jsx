@@ -68,7 +68,6 @@ export default class PhotoGallery extends Component {
     if(deltaX > 20 && current > 0) this.slide('prev')
   }
   
-
   onError(e) {
     this.setState({ 
       errors: [...this.state.errors, parseInt(e.currentTarget.id)] 

@@ -50,7 +50,7 @@ export default class PhotoGallery extends Component {
       <img 
         id={image.id} 
         key={`img-${image.id}`} 
-        style={{ height: 'inherit' }} 
+        className='slide-image'
         src={image.url}  
         alt={image.caption} 
         onError={(e) => this.onError(e)} />
@@ -88,9 +88,9 @@ export default class PhotoGallery extends Component {
 
   render({ current, images } = this.state) {
     return (
-      <div id='photo-gallery'>
+      <div>
         <div 
-          className='gallery' 
+          id='gallery' 
           style={{ transform: `translate(${current * -100}vw)` }}>
           {this.createSlides()}
         </div>

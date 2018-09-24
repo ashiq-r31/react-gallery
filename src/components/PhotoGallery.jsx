@@ -13,6 +13,7 @@ export default class PhotoGallery extends Component {
   constructor() {
     super()
     this.state = {
+      touch: null,
       current: 0,
       errors: [],
       images: [
@@ -29,7 +30,11 @@ export default class PhotoGallery extends Component {
   createSlides() {
     return this.state.images.map(image => {
       return (
-        <div key={`slide-${image.id}`} className='slide'>
+        <div 
+          key={`slide-${image.id}`} 
+          className='slide'
+          onTouchStart={(e) => this.handleStart(e)}
+          onTouchEnd={(e) => this.handleEnd(e)}>
           <div key={`slide-container-${image.id}`} className='slide-container'>
             {this.createImage(image)}
           </div>
@@ -52,6 +57,18 @@ export default class PhotoGallery extends Component {
         onError={(e) => this.onError(e)} />
     )
   }
+
+  handleStart(e) {
+    const clientX = e.changedTouches[0].clientX 
+    this.setState({ clientX })
+  }
+
+  handleEnd(e) {
+    const deltaX = e.changedTouches[0].clientX - this.state.clientX
+    if(deltaX < -20 && this.state.current < this.state.images.length - 1) this.slide('next')
+    if(deltaX > 20 && this.state.current > 0) this.slide('prev')
+  }
+  
 
   onError(e) {
     this.setState({ 

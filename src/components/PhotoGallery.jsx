@@ -13,13 +13,12 @@ export default class PhotoGallery extends Component {
   constructor() {
     super()
     this.state = {
-      touch: null,
       current: 0,
       errors: [],
       images: [
         { id: 1, url: seriousImg, caption: 'Back at my favorite spot in Deep Ellum!' },
         { id: 2, url: japanImg, caption: 'Neon city' },
-        { id: 3, url: waveImg, caption: 'Hi guys' },
+        { id: 3, url: waveImg, caption: '' },
         { id: 4, url: '../images/non-exist.jpeg', caption: 'Here is an edge case' },
         { id: 5, url: pieImg, caption: 'They are an actual pie restaurant - just saying' },
         { id: 6, url: bb8Img, caption: 'Best Star Wars character since Chewie' },
@@ -59,14 +58,14 @@ export default class PhotoGallery extends Component {
   }
 
   handleStart(e) {
-    const clientX = e.changedTouches[0].clientX 
-    this.setState({ clientX })
+    this.setState({ clientX: e.changedTouches[0].clientX })
   }
 
   handleEnd(e) {
-    const deltaX = e.changedTouches[0].clientX - this.state.clientX
-    if(deltaX < -20 && this.state.current < this.state.images.length - 1) this.slide('next')
-    if(deltaX > 20 && this.state.current > 0) this.slide('prev')
+    const { current, images, clientX } = this.state
+    const deltaX = e.changedTouches[0].clientX - clientX
+    if(deltaX < -20 && current < images.length - 1) this.slide('next')
+    if(deltaX > 20 && current > 0) this.slide('prev')
   }
   
 
@@ -77,40 +76,41 @@ export default class PhotoGallery extends Component {
   }
 
   slide(name) {
-    if (name === 'next' && this.state.current < this.state.images.length) {
-      const current = this.state.current + 1
-      this.setState({ current })
+    const { current, images } = this.state
+    if (name === 'next' && current < images.length) {
+      const curr = current + 1
+      this.setState({ current: curr })
     }
-    if (name === 'prev' && this.state.current > 0) {
-      const current = this.state.current - 1
-      this.setState({ current })
+    if (name === 'prev' && current > 0) {
+      const curr = current - 1
+      this.setState({ current: curr })
     }
   }
 
-  render() {
+  render({ current, images } = this.state) {
     return (
       <div id='photo-gallery'>
         <div 
           className='gallery' 
-          style={{ transform: `translate(${this.state.current * -100}vw)` }}>
+          style={{ transform: `translate(${current * -100}vw)` }}>
           {this.createSlides()}
         </div>
 
-        {this.state.current > 0 &&
+        {current > 0 &&
           <img
             className='direction left'
             src={leftIcon} alt='left'
             onClick={() => this.slide('prev')} />}
-        {this.state.current < this.state.images.length - 1 &&
+        {current < images.length - 1 &&
           <img
             className='direction right'
             src={rightIcon}
             alt='right'
             onClick={() => this.slide('next')} />}
 
-        <div className='caption'>
-          <p>{this.state.images[this.state.current]['caption']}</p>
-        </div>
+        {images[current].caption.length && <div className='caption'>
+          <p>{images[current]['caption']}</p>
+        </div>}
       </div>
     )
   }

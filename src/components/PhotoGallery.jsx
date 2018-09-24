@@ -44,7 +44,7 @@ export default class PhotoGallery extends Component {
 
   createImage(image) {
     if(this.state.errors.includes(image.id)) {
-      return <p style={{ color: 'white' }}>Image not available</p>
+      return <h2 style={{ color: 'white' }}>Image not available</h2>
     }
     return (
       <img 
@@ -88,7 +88,7 @@ export default class PhotoGallery extends Component {
 
   render({ current, images } = this.state) {
     return (
-      <div>
+      <div id='photo-gallery'>
         <div 
           id='gallery' 
           style={{ transform: `translate(${current * -100}vw)` }}>

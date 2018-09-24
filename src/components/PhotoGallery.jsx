@@ -90,7 +90,9 @@ export default class PhotoGallery extends Component {
   render() {
     return (
       <div id='photo-gallery'>
-        <div className='gallery' style={{ transform: `translate(${this.state.current * -100}vw)` }}>
+        <div 
+          className='gallery' 
+          style={{ transform: `translate(${this.state.current * -100}vw)` }}>
           {this.createSlides()}
         </div>
 

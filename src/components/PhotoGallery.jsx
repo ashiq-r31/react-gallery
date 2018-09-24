@@ -14,29 +14,48 @@ export default class PhotoGallery extends Component {
     super()
     this.state = {
       current: 0,
+      errors: [],
       images: [
-        { url: seriousImg, caption: 'Back at my favorite spot in Deep Ellum!' },
-        { url: japanImg, caption: 'Neon city' },
-        { url: waveImg, caption: 'Hi guys' },
-        { url: pieImg, caption: 'They are an actual pie restaurant - just saying' },
-        { url: bb8Img, caption: 'Best Star Wars character since Chewie' },
+        { id: 1, url: seriousImg, caption: 'Back at my favorite spot in Deep Ellum!' },
+        { id: 2, url: japanImg, caption: 'Neon city' },
+        { id: 3, url: waveImg, caption: 'Hi guys' },
+        { id: 4, url: '../images/non-exist.jpeg', caption: 'Here is an edge case' },
+        { id: 5, url: pieImg, caption: 'They are an actual pie restaurant - just saying' },
+        { id: 6, url: bb8Img, caption: 'Best Star Wars character since Chewie' },
       ]
     }
   }
 
-  createImages() {
-    return this.state.images.map((image, index) => {
+  createSlides() {
+    return this.state.images.map(image => {
       return (
-        <div key={`slide-${index}`} className='slide'>
-          <div key={`slide-container-${index}`} className='slide-container'>
-            <img
-              key={`img-${index}`}
-              style={{ height: 'inherit' }}
-              src={image.url}
-              alt={image.caption} />
+        <div key={`slide-${image.id}`} className='slide'>
+          <div key={`slide-container-${image.id}`} className='slide-container'>
+            {this.createImage(image)}
           </div>
         </div>
       )
+    })
+  }
+
+  createImage(image) {
+    if(this.state.errors.includes(image.id)) {
+      return <p style={{ color: 'white' }}>Image not available</p>
+    }
+    return (
+      <img 
+        id={image.id} 
+        key={`img-${image.id}`} 
+        style={{ height: 'inherit' }} 
+        src={image.url}  
+        alt={image.caption} 
+        onError={(e) => this.onError(e)} />
+    )
+  }
+
+  onError(e) {
+    this.setState({ 
+      errors: [...this.state.errors, parseInt(e.currentTarget.id)] 
     })
   }
 
@@ -52,12 +71,13 @@ export default class PhotoGallery extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div id='photo-gallery'>
         <div className='gallery' style={{ transform: `translate(${this.state.current * -100}vw)` }}>
-          {this.createImages()}
+          {this.createSlides()}
         </div>
-        
+
         {this.state.current > 0 &&
           <img
             className='direction left'

@@ -73,7 +73,7 @@ p {
 
 .direction {
   position: absolute;
-  top: 45%;
+  top: 43%;
   cursor: pointer; }
 
 .left {
@@ -86,7 +86,11 @@ p {
   #photo-gallery {
     max-height: 50vh; }
   .caption {
-    font-size: 12px; } }
+    font-size: 12px; }
+  .direction {
+    position: absolute;
+    top: 47%;
+    cursor: pointer; } }
 
 @media (min-width: 800px) {
   #photo-gallery {

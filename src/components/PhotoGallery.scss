@@ -84,7 +84,7 @@ p {
 
 .direction { 
   position: absolute;
-  top: 45%;
+  top: 43%;
   cursor: pointer;
 }
 
@@ -103,6 +103,12 @@ p {
 
   .caption {
     font-size: 12px;
+  }
+
+  .direction { 
+    position: absolute;
+    top: 47%;
+    cursor: pointer;
   }
 }
 
